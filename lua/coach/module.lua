@@ -2,7 +2,7 @@
 local M = {}
 
 M.my_first_function = function()
-  return "hello world!"
+  print("hello")
 end
 
 return M
