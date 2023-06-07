@@ -1,28 +1,26 @@
-# A Neovim Plugin Template
+# coach.nvim
 
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/ellisonleao/nvim-plugin-template/default.yml?branch=main&style=for-the-badge)
-![Lua](https://img.shields.io/badge/Made%20with%20Lua-blueviolet.svg?style=for-the-badge&logo=lua)
+Coach is a plugin for [Neovim](https://neovim.io/) 
+帮助你找到不好的 vim 使用习惯，帮助你改正它们，用更少的按键完成更多的事情。
+for example, When u are typing `jjjj` or `kkkk` in normal mode, coach will remind you that you can use `4j` or `4k` instead.
 
-A template repository for Neovim plugins.
+## Installation
 
-## Using it
-
-Via `gh`:
-
+```lua
+return {
+	{
+		"xiantang/coach.nvim",
+		dev = true,
+		build = "bash ./install.sh",
+		config = function()
+			require("coach").setup()
+		end,
+	},
+}
 ```
-$ gh repo create my-plugin -p ellisonleao/nvim-plugin-template
-```
 
-Via github web page:
 
-Click on `Use this template`
+## Credits
 
-![](https://docs.github.com/assets/cb-36544/images/help/repository/use-this-template-button.png)
-
-## Features and structure
-
-- 100% Lua
-- Github actions to run tests and check for formatting errors (Stylua)
-- Tests created with [busted](https://olivinelabs.com/busted/) + [plenary.nvim](https://github.com/nvim-lua/plenary.nvim)
-- luarocks release support (LUAROCKS_API_KEY secret configuration required)
+- [nvim-plugin-template](https://github.com/ellisonleao/nvim-plugin-template)
 
