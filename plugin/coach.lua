@@ -1,4 +1,3 @@
--- vim.api.nvim_create_user_command("MyFirstFunction", require("coach").hello, {})
 local coach = require("coach")
 local logger = require("coach").logger
 vim.api.nvim_create_user_command("UShouldUseStart", function()
