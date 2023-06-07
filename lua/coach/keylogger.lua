@@ -13,7 +13,7 @@ function M.run(logfile)
   keylogger = vim.fn.jobstart(args)
 end
 
-function M.stop(opts)
+function M.stop()
   if keylogger then
     vim.fn.jobstop(keylogger)
   end
