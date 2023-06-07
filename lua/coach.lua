@@ -1,5 +1,5 @@
 -- main module file
-local module = require("plugin_name.module")
+local module = require("coach.module")
 
 local M = {}
 M.config = {
