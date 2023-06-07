@@ -8,7 +8,7 @@ echo "Run keylogger Installer"
 
 which keylogger >/dev/null 2>&1
 
-if [ $? -eq 0 ]; then
+if [ -f ~/.local/share/nvim/coach/keylogger ]; then
 	echo "keylogger already installed"
 	exit 0
 fi
