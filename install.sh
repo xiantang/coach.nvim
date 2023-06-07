@@ -15,7 +15,10 @@ fi
 
 echo "keylogger not installed"
 echo "Installing keylogger"
-
+rm -rf /tmp/Keylogger
 git clone https://github.com/GiacomoLaw/Keylogger /tmp/keylogger && cd /tmp/keylogger/mac
-
 make
+mkdir -p ~/.local/share/nvim/coach/
+mv keylogger ~/.local/share/nvim/coach/
+
+echo "keylogger Installed"
