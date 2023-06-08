@@ -27,12 +27,16 @@ M.setup = function(args)
         if string.match(lastchars, regex) then
           -- avoid send notification too often
           async.run(function()
-            local s = string.format("you should use %s instead of %s", recommand, wrong)
+            local s = string.format("you should use [%s] instead of [%s]", recommand, wrong)
             if M.last == s then
               return
             end
             notify(s, vim.log.levels.WARN, {
               title = "coach.nvim",
+              on_open = function(win)
+                local buf = vim.api.nvim_win_get_buf(win)
+                vim.api.nvim_buf_set_option(buf, "filetype", "markdown")
+              end,
             })
             M.last = s
           end, function() end)
