@@ -31,7 +31,9 @@ M.setup = function(args)
             if M.last == s then
               return
             end
-            notify(s)
+            notify(s, vim.log.levels.WARN, {
+              title = "coach.nvim",
+            })
             M.last = s
           end, function() end)
           return true
