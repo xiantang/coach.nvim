@@ -20,14 +20,14 @@ M.setup = function(args)
     pattern = { "*" },
     callback = function(env)
       -- read last line of  ~/logfile.txt
-      local lastchars = vim.fn.system("tail -c 20 " .. M.logfile)
+      local lastchars = vim.fn.system("tail -c 30 " .. M.logfile)
       local async = require("plenary.async")
       local notify = require("notify").async
       local function check(regex, recommand, wrong)
         if string.match(lastchars, regex) then
           -- avoid send notification too often
           async.run(function()
-            local s = string.format("you should use [%s] instead of [%s]", recommand, wrong)
+            local s = string.format("you should use %s instead of %s", recommand, wrong)
             if M.last == s then
               return
             end
@@ -70,6 +70,16 @@ M.setup = function(args)
       end
       if env.event == "TextYankPost" then
         if check("y%[left%-shift%]4$", "Y", "y$") then
+          return
+        end
+        if check("vi%[left%-shift%]%[%[left%-shift%]y", "yi{", "vi{y") then
+          return
+        end
+        -- ya{
+        if check("va%[left%-shift%]%[%[left%-shift%]y", "ya{", "va{y") then
+          return
+        end
+        if check("vafy", "yaf", "vafy") then
           return
         end
         if check("d%[left%-shift%]4$", "D", "d$") then
